@@ -56,8 +56,8 @@ class DenseBlock(torch.nn.Module):
         return out
 
 
-# DenseFuse network
-class TDFusion_net(nn.Module):
+# MTDFusion network
+class MTDFusion_net(nn.Module):
     def __init__(self, input_nc=1, output_nc=1):
         super(TDFusion_net, self).__init__()
         denseblock = DenseBlock
@@ -135,7 +135,7 @@ def test():
     print('start test')
     x = torch.randn((1, 1, 482, 512))
     # x = torch.randn((1, 3, 256, 256))
-    model = TDFusion_net(input_nc=1, output_nc=1)
+    model = MTDFusion_net(input_nc=1, output_nc=1)
     en = model.encoder(x)
     print(en[0].shape)
     predictions = model.decoder(en)
